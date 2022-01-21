@@ -15,42 +15,18 @@ Hint: For subsets([1, 2, 3]), there are two kinds of subsets:
 ***********************************************************************/
 
 const subsets = (arr) => {
-  let element1;
-  let element2;
-  if (arr.length === 0) {
+  if (!arr.length) { // base case: arr = [];
     return [arr];
-  } else if (arr.length === 1) {
-    element1 = [arr[index]];
-    result.push(element1);
-    return result;
-  } else if (index < 2 && !passed3) {
-    element1 = [arr[index]];
-    result.push(element1);
-    return subsets(arr, result, ++index);
-  } else if (index === 2 && !passed3) {
-    if (arr.length === 2) {
-      element1 = [arr[0], arr[1]];
-      result.push(element1);
-      return result
-    } else {
-      element1 = [arr[0], arr[1]];
-      element2 = [arr[index]];
-      result.push(element1);
-      result.push(element2);
-      return subsets(arr, result, 0, true);
-    }
-  } else if (index < 2 && passed3) {
-    element1 = [arr[index], arr[2]]
-    result.push(element1);
-    return subsets(arr, result, ++index, true);
-  } else {
-    element1 = [...arr];
-    result.push(element1);
-    return result;
   }
+
+  let last = arr.slice(arr.length - 1); // take last
+  let rest = subsets(arr.slice(0, arr.length - 1)); // take rest (beginning)
+  let restWithLast = rest.map((ele) => ele.concat(last)); // distribute last into each subset of rest
+
+  return rest.concat(restWithLast); //concat rest with distributed for full subset
 }
 
-console.log(subsets([1]));
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
