@@ -1,4 +1,3 @@
-///Bio break
 
 function getProduct(nums) {
     return nums.reduce((output, el) => {
@@ -11,7 +10,7 @@ function highestProduct(numsList) {
     let highest = 0;
 
     return numsList.reduce((output, el, index) => {
-        if (getProduct(el) > highest){
+        if (getProduct(el) > highest) {
             highest = getProduct(el);
             output = index;
             return output;
