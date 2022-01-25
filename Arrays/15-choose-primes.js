@@ -19,11 +19,15 @@ console.log(choosePrimes([5, 6, 4, 11, 2017])); // [ 5, 11, 2017 ]
 */
 
 
-function choosePrimes(nums) {
-    return nums.reduce((output, currentEl) => {
-        (isPrime(currentEl)) ? output.push(currentEl) : null
-        return output
-    }, [])
+// function choosePrimes(nums) {
+//     return nums.reduce((output, currentEl) => {
+//         (isPrime(currentEl)) ? output.push(currentEl) : null
+//         return output
+//     }, [])
+// }
+
+const choosePrimes = (nums) => {
+    return nums.filter((el) => isPrime(el));
 }
 
 function isPrime(num) {
@@ -37,6 +41,9 @@ function isPrime(num) {
     return isPrime
 }
 
+
+console.log(choosePrimes([36, 48, 9, 13, 19])); // [ 13, 19 ]
+console.log(choosePrimes([5, 6, 4, 11, 2017])); // [ 5, 11, 2017 ]
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 

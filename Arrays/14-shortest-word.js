@@ -14,18 +14,22 @@ console.log(shortestWord('do what you enjoy'));         // 'do'
 
 */
 
-function shortestWord(sentence) {
-  const splitString = sentence.split(" ")
-  let firstEl = true
-  return splitString.reduce((output, currentEl) => {
-    if (firstEl) {
-      output = currentEl
-      firstEl = false
-    } else if (currentEl.length <= output.length && !firstEl) {
-      output = currentEl
-    }
-    return output
-  }, "")
+// function shortestWord(sentence) {
+//   const splitString = sentence.split(" ")
+//   let firstEl = true
+//   return splitString.reduce((output, currentEl) => {
+//     if (firstEl) {
+//       output = currentEl
+//       firstEl = false
+//     } else if (currentEl.length <= output.length && !firstEl) {
+//       output = currentEl
+//     }
+//     return output
+//   }, "")
+// }
+
+const shortestWord = (sentence) => {
+  
 }
 
 
