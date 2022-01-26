@@ -4,37 +4,29 @@
 
 //declare function luckyNumbers which takes in a matrix
 const luckyNumbers = (matrix) => {
-    let ans = [];
-    let columns = column(matrix);
-    matrix.forEach((el)=> {
-        let min = Math.min(...el);
-        columns.forEach((columnEl) => {
-            let max = Math.max(...columnEl);
-            if (max === min) {
-                ans.push(max);
+    let ans = [];       //declare empty answer array
+    let columns = column(matrix); //create columns out of the matrix
+    matrix.forEach((el)=> {     //for every element in the matrix
+        let min = Math.min(...el);      //find the minimum of the row and set to minimum
+        columns.forEach((columnEl) => {     //for every column in the matrix
+            let max = Math.max(...columnEl);        //find the maximum of the column and set it equal to max
+            if (max === min) {      // if the max equals the min, it is a lucky number
+                ans.push(max);      //push the maximum to answer
             }
         })
     })
-    return ans;
+    return ans;     //return the answer
 
 }
 
-//create columns
 
+//create columns to be compared
 const column = (matrix) => {
     return matrix[0].map((col, i) => matrix.map(row => row[i]));
 
 }
 
 
-
-//reduce to the minimum in each row and save to array
-// const minRow = (matrix) => {
-//     return matrix.reduce((output, el) => {
-//         output.push(Math.min(...el));
-//         return output;
-//     }, [])
-// }
 
 
 

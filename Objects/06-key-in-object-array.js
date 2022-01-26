@@ -22,12 +22,24 @@ keyInObjectArray(objArray, 'animal'); // => false
 function keyInObjectArray(objArray, keyString) {
   let result = false
   objArray.forEach((el) => {
-    if (el.hasOwnProperty(keyString)) {
-      result = true
+    if (keyString in el) {
+      result = true;
     }
   })
-  return result
+  return result;
 }
+
+let objArray = [
+  { name: "Rupert" },
+  { age: 42 },
+  { planet: "Earth", system: "Milky Way" }
+];
+
+console.log(keyInObjectArray(objArray, 'planet')); // => true
+keyInObjectArray(objArray, 'age'); // => true
+console.log(keyInObjectArray(objArray, 'food')); // => false
+keyInObjectArray(objArray, 'animal'); // => false
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 module.exports = keyInObjectArray;
