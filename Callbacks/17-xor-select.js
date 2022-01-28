@@ -34,16 +34,23 @@ console.log(
 let xorSelect = function(arr, cb1, cb2) {
   let result = [];
   for (let i = 0; i < arr.length; i++){
-    if (cb1(arr[i]) === true){
+    if ((cb1(arr[i]) && !cb2(arr[i]) || (!cb1(arr[i] && cb2(arr[i]))))){
       result.push(arr[i]);
-    } else if (cb2(arr[i]) === true) {
-      result.push(arr[i]);
-    } else {
-      return false;
     }
   }
   return result;
 };
+
+let isEven = function (n) {
+  return n % 2 === 0;
+};
+
+let isPositive = function (n) {
+  return n > 0;
+};
+
+console.log(xorSelect([-2, -1, 1, 2, 3, 4], isEven, isPositive));
+// [ -2, 1, 3 ]
 
 
 

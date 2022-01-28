@@ -18,7 +18,7 @@ console.log(maxWithReduce([-2, -3, -7, 3])); // 3
 function maxWithReduce(nums) {
   return nums.reduce((output, currentEl) => {
     (currentEl > output) ? output = currentEl : null
-    return output
+    return output;
   }, 0)
 }
 
