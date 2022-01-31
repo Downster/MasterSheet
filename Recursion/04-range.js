@@ -11,15 +11,19 @@ range(7, 6); // []
 ***********************************************************************/
 
 
-function range(start, end, array = []) {
-  if (end < start) {
-    return array
-  } else {
-    array.push(start++)
-    return (start === end) ? array : range(start, end, array)
-  }
-}
+// function range(start, end, array = []) {
+//   if (end < start) {
+//     return array
+//   } else {
+//     array.push(start++)
+//     return (start === end) ? array : range(start, end, array)
+//   }
+// }
 
+const range = (start, end) => {
+  if (end <= start) return [];
+  return [start, ...range(start + 1, end)];
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

@@ -11,7 +11,8 @@ flatten([1, [2, [3]]]); // [1, 2, 3]
 ***********************************************************************/
 
 function flatten(item) {
-  
+  if (!item.length) return [];
+  return []
 }
 
 console.log(flatten([1, 2]));

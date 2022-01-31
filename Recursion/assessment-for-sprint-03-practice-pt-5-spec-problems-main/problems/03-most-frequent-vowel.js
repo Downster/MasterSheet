@@ -64,8 +64,47 @@ on the command line.
 
 const VOWELS = ['a', 'e', 'i', 'o', 'u'];
 const mostFrequentVowel = function (words, counter = {}) {
-  // Your code here
+  //base case when words has no length
+  if (!words.length){
+    if (!Object.keys(counter).length){
+    //if counters is empty
+      return ""
+      //return string
+    }else {
+    //else
+      return Object.keys(counter).reduce((a, b) => counter[a] > counter[b] ? a : b)
+      //return the highest key in counter
+    }
+  }else {
+    let word = words.pop();
+    counter = containsVowel(word, counter);
+    return mostFrequentVowel(words, counter);
+  }
 }
+
+
+const containsVowel = (word, counter) => {
+  let array = word.split("");
+  array.forEach((el) => {
+    if (VOWELS.includes(el)){
+      if (el in counter){
+        counter[el] = counter[el] + 1
+      }else {
+        counter[el] = 1;
+      }
+    }
+  })
+  return counter;
+}
+
+let words = ['apple', 'pear', 'melon', 'coconut', 'lime'];
+console.log(mostFrequentVowel(words));
+
+console.log(mostFrequentVowel(['dog', 'cow', 'pig', 'chicken', 'horse']));
+
+//took about 20 minutes
+
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {

@@ -32,18 +32,18 @@ on the command line.
 
 ***********************************************************************/
 
-function printOuterNumsFirst(nums) {
-  // Your code here
   function printOuterNumsFirst(nums) {
-    if (nums.length === 1) return;
-
+    if (nums.length === 1) {
+      console.log(nums[0])
+      return;
+    }
     // extract the number from the beginning if the length of the array is even
     // else, extract from the end
     let num;
     if (nums.length % 2 === 0) {
-      num = nums.pop();
-    } else {
       num = nums.shift();
+    } else {
+      num = nums.pop();
     }
 
     // print the extracted number
@@ -52,7 +52,10 @@ function printOuterNumsFirst(nums) {
     // Make a recursive call with the modified nums array.
     printOuterNumsFirst(nums);
   }
-}
+
+printOuterNumsFirst([21, 4, 6, 93, 78]);
+
+//took 4 minutes
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
