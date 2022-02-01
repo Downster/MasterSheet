@@ -11,8 +11,7 @@ flatten([1, [2, [3]]]); // [1, 2, 3]
 ***********************************************************************/
 
 function flatten(item) {
-  if (!item.length) return [];
-  return []
+  return array.reduce((output, el) => output.concat(Array.isArray(el) ? flatten(el) : el), [])
 }
 
 console.log(flatten([1, 2]));
