@@ -20,12 +20,18 @@ exponent(2, -2); // 1/4 (or 0.25)
 exponent(5, 5); // 3125
 ***********************************************************************/
 
-function exponent(num, power, originalNum = num) {
-    if (Math.sign(power) === -1) {
-        return (power === -1) ? 1 / num : exponent(num * originalNum, ++power, originalNum)
-    } else {
-        return (power === 1) ? num : exponent(num * originalNum, --power, originalNum)
-    }
+// function exponent(num, power, originalNum = num) {
+//     if (Math.sign(power) === -1) {
+//         return (power === -1) ? 1 / num : exponent(num * originalNum, ++power, originalNum)
+//     } else {
+//         return (power === 1) ? num : exponent(num * originalNum, --power, originalNum)
+//     }
+// }
+
+const exponent = (num, power) => {
+    if (n === 0) return 1
+    if (n < 0) return 1/ b * exponent(b, ++n);
+    return b * exponent(b, --n);
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/

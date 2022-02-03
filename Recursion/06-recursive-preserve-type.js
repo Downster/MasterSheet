@@ -26,6 +26,8 @@ Note: the mocha tests do not test that your solution is implemented recursively.
 However, for bonus points try to solve it both with recursion and iteration.
 */
 
+//const eliminateType = require("./assessment-for-sprint-03-practice-pt-6-spec-problems-main/problems/01-eliminate-type");
+
 function recursivePreserveType(array) {
     let copy = array.slice();
     let result = [];
@@ -44,19 +46,10 @@ function recursivePreserveType(array) {
             } else {
                 return rec(...strings);
             }
-            //if string is object
-            //return all the objects in the input array
-            //if the string is number
-            //return all ther numbers in the input array
-            //if the string is string
-            //return all the strings in the input array
-            //if the string is boolean
-            //return all the booleans in the input arry
-            //if the string is undefined
-            //return all the undefineds in the input array
         }
     }
 }
+
 
 //took like an hour and 15-30
 
@@ -65,9 +58,9 @@ console.log(preserveFunc('number')); // prints [1, 2, 3]
 console.log(preserveFunc('string')); // prints ['one', 'two', 'three']
 
 const preserveFunc2 = recursivePreserveType([2, undefined, 'world', { color: 'red' }, true, 3, [4, 5], 'hello', false]);
-console.log(preserveFunc2('number')); // prints [2, 3]
-console.log(preserveFunc2('object')); // prints [ { color: 'red' }, [4, 5] ]
-console.log(preserveFunc2('boolean')); // prints [ true, false ]
+//console.log(preserveFunc2('number')); // prints [2, 3]
+//console.log(preserveFunc2('object')); // prints [ { color: 'red' }, [4, 5] ]
+//console.log(preserveFunc2('boolean')); // prints [ true, false ]
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {

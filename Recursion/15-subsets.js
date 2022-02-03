@@ -23,8 +23,10 @@ const subsets = (arr) => {
   let rest = subsets(arr.slice(0, arr.length - 1)); // take rest (beginning)
   let restWithLast = rest.map((ele) => ele.concat(last)); // distribute last into each subset of rest
 
-  return rest.concat(restWithLast); //concat rest with distributed for full subset
+  return rest.concat(restWithLast) //concat rest with distributed for full subset
 }
+
+console.log(subsets([1, 2, 3]));
 
 
 

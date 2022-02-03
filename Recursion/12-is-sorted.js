@@ -12,7 +12,9 @@ isSorted([5, 4, 3, 2, 1]); // false
 
 
 function isSorted(arr) {
-
+  if (arr.length === 1)return true;
+  let ele = arr.shift();
+  return (ele < arr[0]) ? isSorted(arr) : false
 }
 
 console.log(isSorted([1, 2, 3, 4, 5]));

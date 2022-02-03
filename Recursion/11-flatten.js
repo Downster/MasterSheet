@@ -11,10 +11,12 @@ flatten([1, [2, [3]]]); // [1, 2, 3]
 ***********************************************************************/
 
 function flatten(item) {
-  return array.reduce((output, el) => output.concat(Array.isArray(el) ? flatten(el) : el), [])
+  return item.reduce((output, el) => output.concat(Array.isArray(el) ? flatten(el) : el), [])
 }
 
-console.log(flatten([1, 2]));
+//const flatten = (arr) => !arr.length ? [] : Array.isArray(arr[0]) ? flatten([...arr[0], ...arr.slice(1)]) : [arr[0], ...flatten(arr.slice(1))];
+
+console.log(flatten([1, [2, [3]]]));
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 module.exports = flatten;

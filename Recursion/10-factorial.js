@@ -16,8 +16,8 @@ factorial(3); // 6
 factorial(5); // 120
 ***********************************************************************/
 
-function factorial(num, product = 1) {
-  
+function factorial(num) {
+    return (num === 1) ? 1 : num * factorial(--num)
 }
 console.log(factorial(3)); // 6
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/

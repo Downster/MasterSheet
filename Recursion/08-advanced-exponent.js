@@ -40,37 +40,20 @@ times `advancedExponent` is being recursively called.
 ***********************************************************************/
 
 
-function advancedExponent(b, n, product = b, endExp = 0, isOdd = false, oddBase = 2) {
+function advancedExponent(b, n) {
+  if (n === 0) return 1;
+  if (n === 1) return b;
   if (n % 2 === 0) {
-    if (n !== 2) {
-      return advancedExponent(b, n / 2, product, endExp + 2, isOdd, oddBase);
-    } else if (endExp === 0) {
-      return exponent(b * b, 1);
-    } else if (!isOdd){
-      return exponent(b * b, endExp);
-    } else {
-      return b * exponent(b * b, endExp);
-    }
-  }else{
-    if (n !== 1) {
-      return advancedExponent(b, (n-1) / 2, product, endExp + 2, isOdd = true, oddBase * 2);
-    } else if ((endExp === 2) && (n === 1)){
-      return b * exponent(b , endExp);
-    } else {
-      return oddBase * exponent(b , endExp);
-    }
-  }
-}
-
-function exponent(num, power, originalNum = num) {
-  if (Math.sign(power) === -1) {
-    return (power === -1) ? 1 / num : exponent(num * originalNum, ++power, originalNum)
+    const halfExp = advancedExponent(b, n / 2)
+    return halfExp * halfExp;
   } else {
-    return (power === 1) ? num : exponent(num * originalNum, --power, originalNum)
-  }
+    const halfExp = advancedExponent(b, (n - 1) / 2)
+    return b * halfExp * halfExp;
+}
 }
 
-console.log(advancedExponent(2, 8));
+
+console.log(advancedExponent(2, 12));
 
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
