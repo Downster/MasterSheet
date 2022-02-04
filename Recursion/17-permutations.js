@@ -10,6 +10,12 @@ permutations([1, 2]) // [[1, 2], [2, 1]]
 permutations([1, 2, 3]) // [[1, 2, 3], [1, 3, 2],
                         // [2, 1, 3], [2, 3, 1],
                         // [3, 1, 2], [3, 2, 1]]
+
+
+                        If you look at it from the sky it just breaks down into, how do you find the permutations of abcde…?
+
+It’s all permutations that start with a + all permutations that start with b + all perms that start with c …. etc
+and to get all perms starting with a you just slap a onto all permutations of the remaining letters
 ***********************************************************************/
 
 // const permutations = (array, count = 0, front = false) => {
