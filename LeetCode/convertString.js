@@ -1,7 +1,7 @@
 const convert = function (s, numRows) {
     let splitString = s.split(""),
         array = Array.from(Array(numRows), () => [])
-        backwards = false,
+    backwards = false,
         count = 0;
 
 
@@ -24,6 +24,3 @@ const convert = function (s, numRows) {
     }
     return array.reduce((output, el) => output += el.join(""), '')
 };
-
-
-console.log(convert('PAYPALISHIRING', 4))
