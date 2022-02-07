@@ -33,10 +33,7 @@ on the command line.
 ***********************************************************************/
 
   function printOuterNumsFirst(nums) {
-    if (nums.length === 1) {
-      console.log(nums[0])
-      return;
-    }
+    if (nums.length === 0) return;
     // extract the number from the beginning if the length of the array is even
     // else, extract from the end
     let num;

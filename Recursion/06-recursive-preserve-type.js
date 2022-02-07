@@ -29,24 +29,14 @@ However, for bonus points try to solve it both with recursion and iteration.
 //const eliminateType = require("./assessment-for-sprint-03-practice-pt-6-spec-problems-main/problems/01-eliminate-type");
 
 function recursivePreserveType(array) {
-    let copy = array.slice();
-    let result = [];
     return rec = (...strings) => {
         //declare result
-        if (!copy.length) {
-            let ans = result.slice();
-            result = [];
-            copy = array.slice();
-            return ans;
-        } else {
-            let el = copy.shift();
-            if (strings.includes(typeof el)) {
-                result.push(el);
-                return rec(...strings);
-            } else {
-                return rec(...strings);
-            }
-        }
+        if (!strings.length) return []
+
+        let testType = type.pop()
+        return array.filter(el => {
+            return (strings.includes(typeof el))
+        }).concat(rec(...strings))
     }
 }
 

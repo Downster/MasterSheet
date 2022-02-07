@@ -1,29 +1,18 @@
-const convert = function (s, numRows) {
-    let splitString = s.split(""),
-        array = Array.from(Array(numRows), () => [])
-        backwards = false,
-        count = 0;
+let array = [-1, 0, 3, 5, 9, 12, 13]
 
-
-    if (numRows === 1) {
-        array[count].push(splitString.join(""))
-    } else {
-        splitString.forEach((el) => {
-            array[count].push(el)
-            if (count === numRows - 1) {
-                backwards = true;
-                count = numRows - 2
-            } else if (count === 0 && backwards) {
-                count++
-                backwards = false;
-            } else {
-                (backwards) ? count-- : count++
-
-            }
-        })
+const binarySearch = (array, target, first = true, mid) => {
+    if (array.length - 1 >= 1 && first) {
+        let mid = (array.length - 1) / 2 | 0
+        first = false;
     }
-    return array.reduce((output, el) => output += el.join(""), '')
-};
+    if (array[mid] === target) return mid;
+    if (array[mid] < target) {
+        console.log(mid);
+        return binarySearch(array, target, first, ++mid)
+    } else if (array[mid] > target) {
+        return binarySearch(array, target, first, --mid)
+    }
+}
 
 
-console.log(convert('PAYPALISHIRING', 4))
+console.log(binarySearch(array, 12))

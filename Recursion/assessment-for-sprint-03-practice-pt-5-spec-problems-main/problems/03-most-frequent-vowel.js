@@ -66,18 +66,14 @@ const VOWELS = ['a', 'e', 'i', 'o', 'u'];
 const mostFrequentVowel = function (words, counter = {}) {
   //base case when words has no length
   if (!words.length){
-    if (!Object.keys(counter).length){
-    //if counters is empty
-      return ""
-      //return string
-    }else {
-    //else
-      return Object.keys(counter).reduce((a, b) => counter[a] > counter[b] ? a : b)
+      return Object.keys(counter).reduce((a, b) => counter[a] > counter[b] ? a : b, "")
       //return the highest key in counter
-    }
   }else {
+    //pop the word off the end
     let word = words.pop();
+    //check if the word has a vowel and return the updated counter object
     counter = containsVowel(word, counter);
+    //recursively call mostFrequent vowel with updated counter
     return mostFrequentVowel(words, counter);
   }
 }
@@ -88,7 +84,7 @@ const containsVowel = (word, counter) => {
   array.forEach((el) => {
     if (VOWELS.includes(el)){
       if (el in counter){
-        counter[el] = counter[el] + 1
+        counter[el]++;
       }else {
         counter[el] = 1;
       }
