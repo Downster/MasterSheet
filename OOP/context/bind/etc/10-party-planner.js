@@ -13,8 +13,8 @@ class PartyPlanner {
 		} else {
 			return this.guestList.reduce((output, guest, i) => {
 				if (i === 0){
-					output += guest
-				} else {
+					output += guest + ", "
+				} else if(i === this.guestlist.length - 1){
 					output += ` and ${guest}`
 				}
 				return output
