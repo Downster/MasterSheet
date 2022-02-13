@@ -18,7 +18,7 @@ class Doctor extends User{
                 break;
             }
         }
-        this.addAppointment(appointment);
+        if (canDo) this.addAppointment(appointment);
         return canDo;
 
     }
