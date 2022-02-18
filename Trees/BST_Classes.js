@@ -1,3 +1,8 @@
+const BFS = require('../Searching/bfs')
+const dfsPreOrder = require('../Searching/dfsPreOrder')
+const dfsPostOrder = require('../Searching/dfsPostOrder')
+const dfsInOrder = require('../Searching/dfsInOrder')
+
 class Node {
     constructor(value) {
         this.value = value;
@@ -23,7 +28,9 @@ class BinarySearchTree {
         let currentNode = this.root
         while (true) {
             //if there is a root compare value to root
-            if (newNode.value === currentNode.value) currentNode.count++;
+            if (newNode.value === currentNode.value) {
+                currentNode.count++;
+            }
             if (newNode.value > currentNode.value) {
                 //check to see if there is a node to the right
                 //if there isn't this is its new home
@@ -33,7 +40,7 @@ class BinarySearchTree {
                     return this;
                 }
                 currentNode = currentNode.right
-            } else {
+            } else if (newNode.value < currentNode.value) {
                 //check to see if there is a node
                 //if there is, repeat these steps
                 //if there isn't this is its new home
@@ -46,6 +53,7 @@ class BinarySearchTree {
         }
     }
 
+
     search(value) {
         //check if there is a root if not we are done searching
         //if there is a root check if the value of the new node is the value we are looking for
@@ -56,7 +64,7 @@ class BinarySearchTree {
             if (value === currentNode.value) return true;;
             //if the valude is greater than the current value move right
             if (value > currentNode.value) {
-                if (!currentNode.right){
+                if (!currentNode.right) {
                     return false;
                 }
                 currentNode = currentNode.right
@@ -69,13 +77,32 @@ class BinarySearchTree {
         }
 
     }
+    // BFS() {
+    //     let queue = [];
+    //     let result = [];
+    //     let node = this.root;
+
+    //     queue.push(node);
+    //     while (queue.length) {
+    //         node = queue.shift()
+    //         result.push(node.value);
+    //         if (node.left) {
+    //             queue.push(node.left);
+    //         }
+    //         if (node.right) {
+    //             queue.push(node.right);
+    //         }
+    //     }
+    //     return result;
+    //}
 }
 
 var tree = new BinarySearchTree();
 tree.insert(15);
-tree.insert(5);
+tree.insert(3);
+tree.insert(6);
 tree.insert(8);
-tree.insert(4);
-tree.insert(15);
-console.log(tree.search(26));
-//console.log(tree);
+tree.insert(10);
+tree.insert(20);
+//console.log(tree.root.value)
+console.log(dfsInOrder(tree))
