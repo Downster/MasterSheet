@@ -1,11 +1,8 @@
-var climbStairs = function (n) {
-    //declare a count variable
-    //fill array with ones
-    //slice two off and add a two
-    //move the two through the ones if possible
-    //check to see if another two can be added
-    //if not, return the count
-    //else add one to count
-
-
-};
+const s = new Stack();
+s.push(1);
+s.push(2);
+s.push(3);
+s.pop();
+s.pop();
+s.push(4);
+console.log(s.pop());
