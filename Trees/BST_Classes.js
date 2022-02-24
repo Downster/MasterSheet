@@ -104,5 +104,5 @@ tree.insert(6);
 tree.insert(8);
 tree.insert(10);
 tree.insert(20);
-//console.log(tree.root.value)
-console.log(dfsInOrder(tree))
+console.log(tree.root.value)
+console.log(dfsPreOrder(tree))
