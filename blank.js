@@ -2,10 +2,11 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 
 
+
 (async () => {
     const browser = await puppeteer.launch({
+        defaultViewport: null,
         headless: false, //launch in non-headless mode so you can see graphics
-        executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
     });
 
 
@@ -42,11 +43,7 @@ const fs = require('fs');
     page.on('request', async (req) => {
 
         // If URL is already loaded in to system
-        if (req.url() === 'https://progress.appacademy.io/me/sign_in') {
-            console.log('logged in, get the cookies');
-            await getCookies(page);
-            // if it's being in login page, try to set existed cookie
-        } else if (req.url() === 'https://progress.appacademy.io/me/sign_in/') {
+        if (req.url() === 'https://progress.appacademy.io/me') {
             await setCookies(page);
             console.log('set the saved cookies');
         }
@@ -59,7 +56,10 @@ const fs = require('fs');
 
     await page.goto('https://progress.appacademy.io/me');
 
+    page.click(".button")
 
+
+    //document.querySelector(copy path of button)
 
 
 
