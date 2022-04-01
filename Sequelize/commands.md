@@ -7,7 +7,8 @@ DROP USER xxx
 DROP DATABASE xxx
 
 --Generate Models
-npx sequelize-cli model:generate --name <Singular with capital first> --attributes name:integer
+
+--name <Singular with capital first> --attributes name:integer
 
 --Example of editing migration file with foreign keys
 
@@ -140,3 +141,81 @@ personId: guy[0].dataValues.id,
 });
 return things;
 }
+
+-- Other runsheet
+
+to start:
+npm install
+npm install pg
+
+npm test
+
+**model: capitalized singular nouns
+tables: capitalized plural nouns**
+
+psql
+create user enrollment_app with password 'password' createdb;
+create database enrollment_development with owner enrollment_app
+create database enrollment_test with owner enrollment_app
+
+terminal
+npx sequelize model:generate --name Person --attributes firstName:string,lastName:string,email:string
+npx sequelize model:generate --name Campus --attributes name:string
+npx sequelize model:generate --name Department --attributes name:string
+npx sequelize model:generate --name Course --attributes name:string,level:integer,campusId:integer,departmentId:integer
+npx sequelize model:generate --name Enrollment --attributes personId:integer,courseId:integer
+
+SEED FILE:
+use this in down method
+code given in the readme
+
+generate seed files
+npx sequelize seed:generate --name peopleData
+npx sequelize seed:generate --name campusesData
+npx sequelize seed:generate --name departmentsData
+npx sequelize seed:generate --name coursesData
+npx sequelize seed:generate --name enrollmentsData
+
+to regenerate database:
+npx sequelize db:drop: // destroys database and tables, resets the id's
+npx sequelize db:create
+npx sequelize db:migrate
+npx sequelize db:seed:all
+to unseed:
+npx sequelize db:seed:undo:all //unseed from table but does not reset the id's
+npx sequelize db:migrate:undo:all // destroys tables which resets ids
+npx sequelize db:migrate
+npx sequelize db:seed:all
+
+associations: going in our models files
+Person belongsToMany Course
+Course belongsToMany Person
+
+Campus hasMany Course
+Course belongsTo Campus
+
+Department hasMany Course
+Course belongsTo Department
+
+QUERIES: the file that is given to us
+1: await Person.findbyPK(personId, {
+include: Course
+}
+(need to return this) ? either save to variable : return the await directly
+
+2: await Person.findAll ({
+where: {
+lastName
+}
+})
+(need to return this) ? either save to variable : return the await directly
+
+3. const person = await Person.findOne({
+   where: {
+   email
+   },
+   include: Course
+   })
+
+console.log(person)
+return person.Courses
