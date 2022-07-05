@@ -1,70 +1,42 @@
-const puppeteer = require('puppeteer');
-const fs = require('fs');
+//Write a function that takes a message and an increment amount and outputs the same letters shifted by that amount in the alphabet. 
+//Assume lowercase and no punctuation.Preserve spaces.
 
 
-
-(async () => {
-    const browser = await puppeteer.launch({
-        defaultViewport: null,
-        headless: false, //launch in non-headless mode so you can see graphics
-    });
-
-
-    let [page] = await browser.pages();
-    await page.setRequestInterception(true);
-
-    const getCookies = async (page) => {
-        // Get page cookies
-        const cookies = await page.cookies()
-
-        // Save cookies to file
-        fs.writeFile('./cookies.json', JSON.stringify(cookies, null, 4), (err) => {
-            if (err) console.log(err);
-            return
-        });
+const ceasarCipher = (msg, amt) => {
+    //declare a variable to track the alphabet
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    //decalre a varible named result
+    let result = '';
+    //if amt is equal to 0, we will return the original message
+    if (amt === 0) {
+        return msg
     }
-
-
-    const setCookies = async (page) => {
-        // Get cookies from file as a string
-        let cookiesString = fs.readFileSync('./cookies.json', 'utf8');
-
-        // Parse string
-        let cookies = JSON.parse(cookiesString)
-
-        // Set page cookies
-        await page.setCookie.apply(page, cookies);
-        return
-    }
-
-
-
-
-    page.on('request', async (req) => {
-
-        // If URL is already loaded in to system
-        if (req.url() === 'https://progress.appacademy.io/me') {
-            await setCookies(page);
-            console.log('set the saved cookies');
+    //iterate over the message
+    for (let i = 0; i < msg.length; i++) {
+        //declare variable character set to current character
+        const char = msg[i]
+        //if the character in message is a space, just insert it into result
+        if (char === ' ') {
+            result += char
+            continue;
         }
+        //determine the position of the new letter
+        //find the index of the current letter in the alphabet variable
+        let idx = alphabet.indexOf(char)
+        //calculate the new letter position by adding the amt to the index of that letter and % 26
+        let newLetter = alphabet[((idx + amt) % 26)]
+        //insert the new letter into result
+        result += newLetter
+    }
+    //return result
+    return result
+}
+
+console.log(5 / 2)
 
 
-        // otherwise go to login page and login yourself
-        req.continue();
-    });
 
 
-    await page.goto('https://progress.appacademy.io/me');
-
-    page.click(".button")
-
-
-    //document.querySelector(copy path of button)
-
-
-
-
-})();
 
 
 

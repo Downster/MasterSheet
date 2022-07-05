@@ -1,9 +1,12 @@
 const express = require("express");
-const app = express();
-const cookieParser = require("cookie-parser");
 const csrf = require("csurf");
-const bodyparser = require("body-parser");
+const cookieParser = require("cookie-parser");
+
+const app = express();
 const csrfProtection = csrf({ cookie: true });
+const bodyparser = require("body-parser");
+const asyncHandler = (handler) => (req, res, next) =>
+  handler(req, res, next).catch(next);
 
 //import models
 const { Person, HairColor } = require("./models");
@@ -11,9 +14,6 @@ const { Person, HairColor } = require("./models");
 //use cookie parser middleware
 app.use(cookieParser());
 app.use(bodyparser.urlencoded({ extended: false }));
-
-const asyncHandler = (handler) => (req, res, next) =>
-  handler(req, res, next).catch(next);
 
 app.get(
   "route here",
